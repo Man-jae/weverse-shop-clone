@@ -1,4 +1,4 @@
-package com.example.weverse_shop_clone
+package com.example.weverse_shop_clone.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -445,6 +445,33 @@
                 app:layout_constraintTop_toBottomOf="@id/text_privacy_policy"
                 />
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/button_back_to_top"
+                android:layout_width="50dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/button_back_to_top"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_paid_service_terms"
+                >
+
+                <View
+                    android:layout_width="25dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1"
+                    android:background="@drawable/ic_back_to_top"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>

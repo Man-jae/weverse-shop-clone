@@ -60,13 +60,13 @@
 
     <style name="text_company_info_desc">
         <item name="android:textColor">@color/company_info</item>
-        <item name="android:textSize">13dp</item>
+        <item name="android:textSize">12dp</item>
         <item name="android:text">@string/company_info_desc</item>
     </style>
 
     <style name="text_company_terms">
         <item name="android:textColor">@color/company_terms</item>
-        <item name="android:textSize">13dp</item>
+        <item name="android:textSize">12dp</item>
     </style>
 
 </resources>

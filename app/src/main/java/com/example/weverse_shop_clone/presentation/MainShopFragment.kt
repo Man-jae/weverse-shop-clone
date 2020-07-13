@@ -10,18 +10,25 @@ class MainShopFragment : BaseFragment() {
     override fun getLayoutResId(): Int = R.layout.fragment_main_shop
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        button_company_info.setOnClickListener {
-            if (layout_company_info.isVisible) {
-                layout_company_info.visibility = View.GONE
-                view_arrow.isChecked = false
-            } else {
-                layout_company_info.visibility = View.VISIBLE
-                view_arrow.isChecked = true
-            }
-        }
+        button_company_info.setOnClickListener(onClickListener)
+        button_back_to_top.setOnClickListener(onClickListener)
+    }
 
-        button_back_to_top.setOnClickListener {
-            scroll_view.smoothScrollTo(0, 0)
+    private val onClickListener = View.OnClickListener {
+        when (it.id) {
+            R.id.button_company_info -> {
+                if (layout_company_info.isVisible) {
+                    layout_company_info.visibility = View.GONE
+                    view_arrow.isChecked = false
+                } else {
+                    layout_company_info.visibility = View.VISIBLE
+                    view_arrow.isChecked = true
+                }
+            }
+
+            R.id.button_back_to_top -> {
+                scroll_view.smoothScrollTo(0, 0)
+            }
         }
     }
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_shop"
+    >
+
+    <fragment
+        android:id="@+id/navigation_shop"
+        android:name="com.example.weverse_shop_clone.presentation.MainShopFragment"
+        android:label="MainShopFragment"
+        tools:layout="@layout/fragment_main_shop"
+        />
+
+    <fragment
+        android:id="@+id/navigation_cart"
+        android:name="com.example.weverse_shop_clone.presentation.MainCartFragment"
+        android:label="MainCartFragment"
+        tools:layout="@layout/fragment_main_cart"
+        />
+
+    <fragment
+        android:id="@+id/navigation_my"
+        android:name="com.example.weverse_shop_clone.presentation.MainMyFragment"
+        android:label="MainMyFragment"
+        tools:layout="@layout/fragment_main_my"
+        />
+
+    <fragment
+        android:id="@+id/navigation_more"
+        android:name="com.example.weverse_shop_clone.presentation.MainMoreFragment"
+        android:label="MainMoreFragment"
+        tools:layout="@layout/fragment_main_more"
+        />
+
+</navigation>

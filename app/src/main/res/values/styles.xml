@@ -18,18 +18,31 @@
 
     <style name="text_artist_name">
         <item name="android:textColor">@color/shop_artist_name</item>
-        <item name="android:text">ARTIST_NAME</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">30dp</item>
+        <item name="android:text">ARTIST_NAME</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">1</item>
     </style>
 
     <style name="text_shop_type">
         <item name="android:textColor">@color/shop_type_text</item>
-        <item name="android:text">TYPE</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">8dp</item>
+        <item name="android:text">TYPE</item>
+    </style>
+
+    <style name="text_shop_title">
+        <item name="android:textColor">@color/shop_title</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="button_shop_goods_more">
+        <item name="android:background">@drawable/button_goods_more</item>
+        <item name="android:textColor">@color/button_main</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:text">@string/shop_goods_more_button</item>
     </style>
 
 </resources>

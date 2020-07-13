@@ -4,4 +4,17 @@
     <string name="bottom_navigation_cart">Cart</string>
     <string name="bottom_navigation_my">My</string>
     <string name="bottom_navigation_more">More</string>
+    <string name="shop_goods_title">상품</string>
+    <string name="shop_goods_tab_book">BOOK</string>
+    <string name="shop_goods_tab_collab">COLLAB</string>
+    <string name="shop_goods_tab_merch">MERCH</string>
+    <string name="shop_goods_tab_album">ALBUM</string>
+    <string name="shop_goods_tab_membership">MEMBERSHIP</string>
+    <string name="shop_goods_tab_weverse">WEVERSE</string>
+    <string name="shop_goods_tab_dvd">DVD</string>
+    <string name="shop_goods_tab_pop_up">POP-UP</string>
+    <string name="shop_goods_tab_live">LIVE</string>
+    <string name="shop_goods_tab_bangbang">BANGBANG POP-UP</string>
+    <string name="shop_goods_tab_art_toy">ART TOY</string>
+    <string name="shop_goods_more_button">모든 상품 더보기</string>
 </resources>

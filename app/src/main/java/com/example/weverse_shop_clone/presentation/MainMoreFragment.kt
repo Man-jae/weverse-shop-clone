@@ -1,15 +1,7 @@
 package com.example.weverse_shop_clone.presentation
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.example.weverse_shop_clone.R
 
-class MainMoreFragment : Fragment() {
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_main_more, container, false)
-    }
+class MainMoreFragment : BaseFragment() {
+    override fun getLayoutResId(): Int = R.layout.fragment_main_more
 }

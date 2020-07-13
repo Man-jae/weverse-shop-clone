@@ -15,6 +15,8 @@
         app:itemIconSize="24dp"
         app:itemIconTint="@color/color_bottom_navigation"
         app:itemTextColor="@color/color_bottom_navigation"
+        app:itemTextAppearanceActive="@style/bottom_navigation_active"
+        app:itemTextAppearanceInactive="@style/bottom_navigation_inactive"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

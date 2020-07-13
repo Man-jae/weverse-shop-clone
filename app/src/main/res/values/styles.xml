@@ -8,4 +8,12 @@
         <item name="android:statusBarColor">@color/gray_cccccc</item>
     </style>
 
+    <style name="bottom_navigation_active" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">10dp</item>
+    </style>
+
+    <style name="bottom_navigation_inactive" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">10dp</item>
+    </style>
+
 </resources>

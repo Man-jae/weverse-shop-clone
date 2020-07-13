@@ -19,6 +19,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
             >
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -349,17 +350,19 @@
                     style="@style/text_company_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="사업자 정보"
+                    android:text="@string/company_info"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintRight_toLeftOf="@id/view_arrow"
                     app:layout_constraintTop_toTopOf="parent"
                     />
 
-                <View
+                <CheckBox
                     android:id="@+id/view_arrow"
                     android:layout_width="24dp"
                     android:layout_height="0dp"
-                    android:background="@drawable/ic_arrow_up"
+                    android:button="@null"
+                    android:clickable="false"
+                    android:background="@drawable/check_company_info"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintDimensionRatio="1"
                     app:layout_constraintRight_toRightOf="parent"
@@ -372,6 +375,7 @@
                 android:id="@+id/layout_company_info"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/button_company_info"

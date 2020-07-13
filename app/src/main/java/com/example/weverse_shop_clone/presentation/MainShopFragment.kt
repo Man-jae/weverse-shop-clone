@@ -1,6 +1,7 @@
 package com.example.weverse_shop_clone.presentation
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.core.widget.NestedScrollView
@@ -10,11 +11,17 @@ import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_main_shop.*
 
 class MainShopFragment : BaseFragment() {
+    private var currentY = 0
+
     override fun getLayoutResId(): Int = R.layout.fragment_main_shop
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         button_company_info.setOnClickListener(onClickListener)
         button_back_to_top.setOnClickListener(onClickListener)
+
+        scroll_view.setOnScrollChangeListener { _: NestedScrollView?, _: Int, scrollY: Int, _: Int, _: Int ->
+            currentY = scrollY
+        }
 
         initGoods()
     }
@@ -27,11 +34,27 @@ class MainShopFragment : BaseFragment() {
         layout_tab_shop.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 viewpager_goods.currentItem = tab.position
+                if (currentY > layout_goods.top) {
+                    scrollToView(layout_goods, scroll_view, 0)
+                }
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab) {}
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
+    }
+
+    private fun scrollToView(view: View, scrollView: NestedScrollView, count: Int) {
+        var count = count
+        if (view != scrollView) {
+            count += view.top
+            scrollToView(view.parent as View, scrollView, count)
+        } else {
+            val finalCount = count
+            Handler().postDelayed({
+                scrollView.smoothScrollTo(0, finalCount)
+            }, 200)
+        }
     }
 
     private val onClickListener = View.OnClickListener {

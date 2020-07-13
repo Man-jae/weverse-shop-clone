@@ -45,4 +45,28 @@
         <item name="android:text">@string/shop_goods_more_button</item>
     </style>
 
+    <style name="text_company_name">
+        <item name="android:textColor">@color/company_info</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:text">@string/company_name</item>
+    </style>
+
+    <style name="text_company_info">
+        <item name="android:textColor">@color/company_info</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:text">@string/company_info</item>
+    </style>
+
+    <style name="text_company_info_desc">
+        <item name="android:textColor">@color/company_info</item>
+        <item name="android:textSize">13dp</item>
+        <item name="android:text">@string/company_info_desc</item>
+    </style>
+
+    <style name="text_company_terms">
+        <item name="android:textColor">@color/company_terms</item>
+        <item name="android:textSize">13dp</item>
+    </style>
+
 </resources>

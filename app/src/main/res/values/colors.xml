@@ -14,6 +14,8 @@
     <color name="shop_type_text">@color/white_ffffff</color>
     <color name="shop_title">@color/black_000000</color>
     <color name="button_main">@color/green_03dac5</color>
+    <color name="company_info">@color/gray_999999</color>
+    <color name="company_terms">@color/gray_666666</color>
 
 
     <!-- Palette colors -->
@@ -21,6 +23,7 @@
     <color name="black_000000">#000000</color>
     <color name="gray_333333">#333333</color>
     <color name="gray_666666">#666666</color>
+    <color name="gray_999999">#999999</color>
     <color name="gray_cccccc">#cccccc</color>
     <color name="white_ffffff">#ffffff</color>
     <color name="green_03dac5">#03DAC5</color>

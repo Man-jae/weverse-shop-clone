@@ -323,6 +323,128 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <TextView
+                android:id="@+id/text_company_name"
+                style="@style/text_company_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_notice"
+                />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/button_company_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                app:layout_constraintBottom_toBottomOf="@id/text_company_name"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/text_company_name"
+                >
+
+                <TextView
+                    style="@style/text_company_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="사업자 정보"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/view_arrow"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+                <View
+                    android:id="@+id/view_arrow"
+                    android:layout_width="24dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/ic_arrow_up"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_company_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button_company_info"
+                >
+
+                <TextView
+                    android:id="@+id/text_company_info"
+                    style="@style/text_company_info_desc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="20dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/text_privacy_policy"
+                style="@style/text_company_terms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="@string/company_privacy_policy"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/text_terms_of_use"
+                app:layout_constraintTop_toBottomOf="@id/layout_company_info"
+                />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="0dp"
+                android:background="@color/gray_666666"
+                app:layout_constraintBottom_toBottomOf="@id/text_privacy_policy"
+                app:layout_constraintLeft_toRightOf="@id/text_privacy_policy"
+                app:layout_constraintRight_toLeftOf="@id/text_terms_of_use"
+                app:layout_constraintTop_toTopOf="@id/text_privacy_policy"
+                />
+
+            <TextView
+                android:id="@+id/text_terms_of_use"
+                style="@style/text_company_terms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/company_terms_of_use"
+                app:layout_constraintLeft_toRightOf="@id/text_privacy_policy"
+                app:layout_constraintTop_toBottomOf="@id/layout_company_info"
+                />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="5dp"
+                android:background="@color/gray_666666"
+                app:layout_constraintBottom_toBottomOf="@id/text_terms_of_use"
+                app:layout_constraintLeft_toRightOf="@id/text_terms_of_use"
+                app:layout_constraintTop_toTopOf="@id/text_terms_of_use"
+                />
+
+            <TextView
+                android:id="@+id/text_paid_service_terms"
+                style="@style/text_company_terms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/company_paid_service_terms"
+                app:layout_constraintLeft_toLeftOf="@id/text_privacy_policy"
+                app:layout_constraintTop_toBottomOf="@id/text_privacy_policy"
+                />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>

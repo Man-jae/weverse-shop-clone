@@ -8,6 +8,9 @@
     <color name="bottom_navigation_background">@color/gray_333333</color>
     <color name="bottom_navigation_button_checked">@color/white_ffffff</color>
     <color name="bottom_navigation_button_unchecked">@color/gray_666666</color>
+    <color name="shop_artist_name">@color/black_000000</color>
+    <color name="shop_type_background">@color/black_000000</color>
+    <color name="shop_type_text">@color/white_ffffff</color>
 
 
     <!-- Palette colors -->

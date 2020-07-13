@@ -18,4 +18,5 @@
     <string name="shop_goods_tab_art_toy">ART TOY</string>
     <string name="shop_goods_more_button">모든 상품 더보기</string>
     <string name="shop_recent_goods_title">최근 본 상품</string>
+    <string name="shop_notice_title">공지사항</string>
 </resources>

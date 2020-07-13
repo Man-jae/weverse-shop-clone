@@ -25,4 +25,9 @@
     <string name="company_privacy_policy">개인정보 처리방침 (Weverse Shop)</string>
     <string name="company_terms_of_use">이용약관</string>
     <string name="company_paid_service_terms">유료서비스 이용약관</string>
+    <string name="goods_sole_sale">단독판매</string>
+    <string name="goods_pre_order">예약판매</string>
+    <string name="goods_sold_out">품절</string>
+    <string name="goods_stop_selling">판매중지</string>
+    <string name="goods_won">₩ %d</string>
 </resources>

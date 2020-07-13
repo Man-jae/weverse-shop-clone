@@ -16,6 +16,10 @@
     <color name="button_main">@color/green_03dac5</color>
     <color name="company_info">@color/gray_999999</color>
     <color name="company_terms">@color/gray_666666</color>
+    <color name="goods_sole_sale">@color/green_03dac5</color>
+    <color name="goods_pre_order">@color/gray_999999</color>
+    <color name="goods_title">@color/black_000000</color>
+    <color name="goods_price">@color/black_000000</color>
 
 
     <!-- Palette colors -->

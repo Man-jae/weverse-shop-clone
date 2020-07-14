@@ -13,7 +13,9 @@ import kotlinx.android.synthetic.main.fragment_main_shop.*
 
 class MainShopFragment : BaseFragment() {
     private var recentGoodsAdapter: RecentGoodsAdapter? = null
+    private var noticeAdapter: NoticeAdapter? = null
     private var recentGoodsList = arrayListOf<String>()
+    private var noticeList = arrayListOf<String>()
     private var currentY = 0
 
     override fun getLayoutResId(): Int = R.layout.fragment_main_shop
@@ -28,6 +30,7 @@ class MainShopFragment : BaseFragment() {
 
         initGoods()
         initRecentGoods()
+        initNotice()
     }
 
     private fun initGoods() {
@@ -53,6 +56,15 @@ class MainShopFragment : BaseFragment() {
         recycler_goods_recent.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = recentGoodsAdapter
+            isNestedScrollingEnabled = false
+        }
+    }
+
+    private fun initNotice() {
+        noticeAdapter = NoticeAdapter((activity as MainActivity), noticeList)
+        recycler_notice.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = noticeAdapter
             isNestedScrollingEnabled = false
         }
     }

@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.fragment_main_shop.*
 class MainShopFragment : BaseFragment() {
     private var recentGoodsAdapter: RecentGoodsAdapter? = null
     private var noticeAdapter: NoticeAdapter? = null
+    private var bannerList = arrayListOf<String>()
     private var recentGoodsList = arrayListOf<String>()
     private var noticeList = arrayListOf<String>()
     private var currentY = 0
@@ -28,9 +29,15 @@ class MainShopFragment : BaseFragment() {
             currentY = scrollY
         }
 
+        initBanner()
         initGoods()
         initRecentGoods()
         initNotice()
+    }
+
+    private fun initBanner() {
+        val adapter = BannerAdapter((activity as MainActivity).supportFragmentManager, bannerList)
+        viewpager_banner.adapter = adapter
     }
 
     private fun initGoods() {

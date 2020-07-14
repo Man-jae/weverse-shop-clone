@@ -69,6 +69,22 @@
         <item name="android:textSize">12dp</item>
     </style>
 
+    <style name="text_banner_title">
+        <item name="android:textColor">@color/banner_title</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:text">BANNER_TITLE</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="text_banner_sub_title">
+        <item name="android:textColor">@color/banner_sub_title</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:text">BANNER_SUB_TITLE</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">2</item>
+    </style>
+
     <style name="text_goods_sole_sale">
         <item name="android:textColor">@color/goods_sole_sale</item>
         <item name="android:textSize">12dp</item>

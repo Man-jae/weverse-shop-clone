@@ -102,7 +102,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <androidx.viewpager2.widget.ViewPager2
+                <com.example.weverse_shop_clone.util.MeasuredViewPager
                     android:id="@+id/viewpager_banner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

@@ -5,12 +5,15 @@ import android.os.Handler
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.core.widget.NestedScrollView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.PagerAdapter
 import com.example.weverse_shop_clone.R
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_main_shop.*
 
 class MainShopFragment : BaseFragment() {
+    private var recentGoodsAdapter: RecentGoodsAdapter? = null
+    private var recentGoodsList = arrayListOf<String>()
     private var currentY = 0
 
     override fun getLayoutResId(): Int = R.layout.fragment_main_shop
@@ -24,6 +27,7 @@ class MainShopFragment : BaseFragment() {
         }
 
         initGoods()
+        initRecentGoods()
     }
 
     private fun initGoods() {
@@ -42,6 +46,15 @@ class MainShopFragment : BaseFragment() {
             override fun onTabUnselected(tab: TabLayout.Tab) {}
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
+    }
+
+    private fun initRecentGoods() {
+        recentGoodsAdapter = RecentGoodsAdapter((activity as MainActivity), recentGoodsList)
+        recycler_goods_recent.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = recentGoodsAdapter
+            isNestedScrollingEnabled = false
+        }
     }
 
     private fun scrollToView(view: View, scrollView: NestedScrollView, count: Int) {

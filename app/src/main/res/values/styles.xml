@@ -96,4 +96,18 @@
         <item name="android:text">@string/goods_won</item>
     </style>
 
+    <style name="text_notice_title">
+        <item name="android:textColor">@color/notice_title</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:text">NOTICE_TITLE</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">2</item>
+    </style>
+
+    <style name="text_notice_date">
+        <item name="android:textColor">@color/notice_date</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:text">2020.07.07</item>
+    </style>
+
 </resources>

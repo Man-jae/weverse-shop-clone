@@ -20,6 +20,8 @@
     <color name="goods_pre_order">@color/gray_999999</color>
     <color name="goods_title">@color/black_000000</color>
     <color name="goods_price">@color/black_000000</color>
+    <color name="notice_title">@color/black_000000</color>
+    <color name="notice_date">@color/gray_999999</color>
 
 
     <!-- Palette colors -->

@@ -8,8 +8,13 @@ import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.PagerAdapter
 import com.example.weverse_shop_clone.R
+import com.example.weverse_shop_clone.data.source.remote.ServerManager
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_main_shop.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainShopFragment : BaseFragment() {
     private var recentGoodsAdapter: RecentGoodsAdapter? = null
@@ -33,6 +38,8 @@ class MainShopFragment : BaseFragment() {
         initGoods()
         initRecentGoods()
         initNotice()
+
+        getInfo()
     }
 
     private fun initBanner() {
@@ -73,6 +80,21 @@ class MainShopFragment : BaseFragment() {
             layoutManager = LinearLayoutManager(context)
             adapter = noticeAdapter
             isNestedScrollingEnabled = false
+        }
+    }
+
+    private fun getInfo() {
+        bannerList.clear()
+        noticeList.clear()
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = ServerManager.getInfo(1) // TODO : 임시 Query 적용
+            if (response.isSuccessful) {
+                response.body()?.let { body ->
+                    withContext(Dispatchers.Main) {
+                    }
+                }
+            }
         }
     }
 

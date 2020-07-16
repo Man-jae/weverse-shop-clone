@@ -168,7 +168,7 @@ class MainShopFragment : BaseFragment() {
         }
     }
 
-    private fun getRecentGoods() {
+    fun getRecentGoods() {
         recentGoodsList.clear()
 
         CoroutineScope(Dispatchers.IO).launch {

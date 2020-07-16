@@ -79,7 +79,11 @@ class GoodsAdapter(
                         )
                     )
                     withContext(Dispatchers.Main) {
+                        val navFragment =
+                            (context as MainActivity).supportFragmentManager.findFragmentById(R.id.fragment_main)
+                        val fragment = navFragment?.childFragmentManager?.fragments?.get(0) as MainShopFragment
 
+                        fragment.getRecentGoods()
                     }
                 }
             }

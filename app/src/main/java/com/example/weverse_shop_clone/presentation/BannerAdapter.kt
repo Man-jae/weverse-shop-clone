@@ -10,14 +10,14 @@ import com.example.weverse_shop_clone.util.MeasuredViewPager
 
 class BannerAdapter(
     fm: FragmentManager,
-    private var banners: List<BannerModel>
+    private var items: List<BannerModel>
 ) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     private var currentPosition = -1
 
-    override fun getCount(): Int = banners.size
+    override fun getCount(): Int = items.size
     override fun getItem(position: Int): Fragment {
-        return BannerFragment(banners[position])
+        return BannerFragment(items[position])
     }
 
     override fun setPrimaryItem(container: ViewGroup, position: Int, `object`: Any) {

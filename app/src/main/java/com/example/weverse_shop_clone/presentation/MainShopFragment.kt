@@ -54,15 +54,7 @@ class MainShopFragment : BaseFragment() {
     }
 
     private fun initBanner() {
-        val adapter = BannerAdapter((activity as MainActivity).supportFragmentManager, bannerList)
-        val margin = (20 * resources.displayMetrics.density).toInt()
-
-        viewpager_banner.apply {
-            clipToPadding = false
-            setPadding(margin, 0, margin, 0)
-            pageMargin = margin / 2
-            this.adapter = adapter
-        }
+        viewpager_banner.adapter = BannerAdapter((activity as MainActivity).supportFragmentManager, bannerList)
     }
 
     private fun initGoods() {

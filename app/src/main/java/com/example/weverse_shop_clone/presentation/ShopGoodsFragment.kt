@@ -19,6 +19,7 @@ class ShopGoodsFragment(private val shopInfo: ShopModel) : BaseFragment() {
             layoutManager = GridLayoutManager(context, 2)
             adapter = goodsAdapter
             isNestedScrollingEnabled = false
+            addItemDecoration(SpaceDecoration(2))
         }
     }
 }

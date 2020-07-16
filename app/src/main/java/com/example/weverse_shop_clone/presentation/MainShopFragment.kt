@@ -59,6 +59,7 @@ class MainShopFragment : BaseFragment() {
     }
 
     private fun initGoods() {
+        layout_tab_shop.removeAllTabs()
         shopList.forEach { shop ->
             layout_tab_shop.addTab(layout_tab_shop.newTab().setText(shop.category.name))
         }

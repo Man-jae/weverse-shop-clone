@@ -131,9 +131,6 @@ class MainShopFragment : BaseFragment() {
 
     fun getInfo(artistId: Int, shop: String) {
         swipe_layout.isRefreshing = true
-        bannerList.clear()
-        shopList.clear()
-        noticeList.clear()
 
         scroll_view.smoothScrollTo(0, 0)
 
@@ -141,6 +138,10 @@ class MainShopFragment : BaseFragment() {
             val response = ServerManager.getInfo(artistId)
             if (response.isSuccessful) {
                 response.body()?.let { body ->
+                    bannerList.clear()
+                    shopList.clear()
+                    noticeList.clear()
+
                     bannerList = body.banners.map(BannerMapper::mapToData) as ArrayList<BannerModel>
                     shopList = body.shops.map(ShopMapper::mapToData) as ArrayList<ShopModel>
                     noticeList = body.notices.map(NoticeMapper::mapToData) as ArrayList<NoticeModel>

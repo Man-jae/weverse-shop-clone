@@ -38,11 +38,13 @@ class MainShopFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         layout_artist.setOnClickListener(onClickListener)
+        layout_artist_shop_title.setOnClickListener(onClickListener)
         button_company_info.setOnClickListener(onClickListener)
         button_back_to_top.setOnClickListener(onClickListener)
 
         scroll_view.setOnScrollChangeListener { _: NestedScrollView?, _: Int, scrollY: Int, _: Int, _: Int ->
             currentY = scrollY
+            layout_artist_shop_title.visibility = if (currentY > layout_artist.top) View.VISIBLE else View.GONE
         }
 
         initRecentGoods()
@@ -109,8 +111,10 @@ class MainShopFragment : BaseFragment() {
                     noticeList = body.notices.map(NoticeMapper::mapToData) as ArrayList<NoticeModel>
 
                     withContext(Dispatchers.Main) {
-                        text_artist_name.text = body.artists[artistId - 1].name
+                        val artistName = body.artists[artistId - 1].name
+                        text_artist_name.text = artistName
                         text_artist_shop.text = shop
+                        text_artist_shop_title.text = getString(R.string.artist_shop_title, artistName, shop)
 
                         initBanner()
                         initGoods()
@@ -140,7 +144,8 @@ class MainShopFragment : BaseFragment() {
 
     private val onClickListener = View.OnClickListener {
         when (it.id) {
-            R.id.layout_artist -> {
+            R.id.layout_artist,
+            R.id.layout_artist_shop_title -> {
                 (activity as MainActivity).artistShopBehavior?.state = BottomSheetBehavior.STATE_EXPANDED
             }
 

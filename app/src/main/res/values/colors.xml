@@ -27,6 +27,7 @@
     <color name="bottom_sheet_title">@color/black_000000</color>
     <color name="bottom_sheet_artist_name">@color/black_000000</color>
     <color name="bottom_sheet_shop_name">@color/black_000000</color>
+    <color name="artist_shop_title">@color/black_000000</color>
 
 
     <!-- Palette colors -->

@@ -32,4 +32,5 @@
     <string name="goods_won">₩ %d</string>
     <string name="bottom_sheet_button">완료</string>
     <string name="bottom_sheet_title">아티스트 및 샵 선택</string>
+    <string name="artist_shop_title">%s · %s</string>
 </resources>

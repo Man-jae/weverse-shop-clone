@@ -6,6 +6,47 @@
     android:layout_height="match_parent"
     >
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_artist_shop_title"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@color/background_main"
+        android:elevation="1dp"
+        android:padding="20dp"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <TextView
+            android:id="@+id/text_artist_shop_title"
+            style="@style/text_artist_shop_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/view_artist_shop_title_arrow"
+            />
+
+        <View
+            android:id="@+id/view_artist_shop_title_arrow"
+            android:layout_width="20dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/ic_arrow_down"
+            app:layout_constraintBottom_toBottomOf="@id/text_artist_shop_title"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintLeft_toRightOf="@id/text_artist_shop_title"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_artist_shop_title"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll_view"
         android:layout_width="0dp"
@@ -37,8 +78,11 @@
                     android:id="@+id/layout_artist"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="36dp"
-                    android:padding="20dp"
+                    android:layout_marginTop="40dp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="20dp"
+                    android:paddingTop="15dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"

@@ -4,13 +4,18 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.weverse_shop_clone.R
+import com.example.weverse_shop_clone.data.source.local.ShopDataBase
+import kotlinx.android.synthetic.main.item_recent_goods.view.*
 import java.util.*
 
 class RecentGoodsAdapter(
     private val context: Context,
-    private val items: ArrayList<String>
+    private var items: ArrayList<ShopDataBase>
 ) : RecyclerView.Adapter<RecentGoodsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,9 +29,25 @@ class RecentGoodsAdapter(
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = items[position]
+
+        holder.apply {
+            Glide.with(context)
+                .load(item.imageUrl)
+                .thumbnail(0.1f)
+                .into(viewGoods)
+
+            textGoods.text = item.title
+        }
+    }
+
+    fun setItems(items: ArrayList<ShopDataBase>) {
+        this.items = items
+        notifyDataSetChanged()
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val viewGoods: ImageView = view.view_goods
+        val textGoods: TextView = view.text_goods_title
     }
-
 }

@@ -4,13 +4,16 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weverse_shop_clone.R
+import com.example.weverse_shop_clone.data.model.NoticeModel
+import kotlinx.android.synthetic.main.item_notice.view.*
 import java.util.*
 
 class NoticeAdapter(
     private val context: Context,
-    private val items: ArrayList<String>
+    private var items: ArrayList<NoticeModel>
 ) : RecyclerView.Adapter<NoticeAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,9 +27,22 @@ class NoticeAdapter(
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = items[position]
+
+        holder.apply {
+            textNoticeTitle.text = item.title
+            textNoticeDate.text = item.date
+        }
+    }
+
+    fun setItems(items: ArrayList<NoticeModel>) {
+        this.items = items
+        notifyDataSetChanged()
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        var textNoticeTitle: TextView = view.text_notice_title
+        var textNoticeDate: TextView = view.text_notice_date
     }
 
 }

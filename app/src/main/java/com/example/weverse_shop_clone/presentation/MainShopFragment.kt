@@ -48,7 +48,7 @@ class MainShopFragment : BaseFragment() {
         initRecentGoods()
         initNotice()
 
-        getInfo((activity as MainActivity).artistId)
+        getInfo((activity as MainActivity).artistId, "GLOBAL")
     }
 
     private fun initBanner() {
@@ -96,7 +96,7 @@ class MainShopFragment : BaseFragment() {
         }
     }
 
-    fun getInfo(artistId: Int) {
+    fun getInfo(artistId: Int, shop: String) {
         bannerList.clear()
         noticeList.clear()
 
@@ -110,7 +110,7 @@ class MainShopFragment : BaseFragment() {
 
                     withContext(Dispatchers.Main) {
                         text_artist_name.text = body.artists[artistId - 1].name
-                        text_artist_shop.text = body.artists[artistId - 1].shops[0]
+                        text_artist_shop.text = shop
 
                         initBanner()
                         initGoods()

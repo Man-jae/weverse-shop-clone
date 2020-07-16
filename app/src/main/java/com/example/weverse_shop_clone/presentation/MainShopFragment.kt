@@ -99,6 +99,7 @@ class MainShopFragment : BaseFragment() {
             adapter = recentGoodsAdapter
             isNestedScrollingEnabled = false
         }
+        checkRecentGoods()
     }
 
     private fun initNotice() {
@@ -145,6 +146,10 @@ class MainShopFragment : BaseFragment() {
                 }
             }
         }
+    }
+
+    private fun checkRecentGoods() {
+        layout_goods_recent.visibility = if (recentGoodsList.isEmpty()) View.GONE else View.VISIBLE
     }
 
     private fun scrollToView(view: View, scrollView: NestedScrollView, count: Int) {

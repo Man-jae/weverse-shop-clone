@@ -2,6 +2,7 @@ package com.example.weverse_shop_clone.presentation
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity(), BottomSheetArtistAdapter.OnArtistShopL
     var artistShopList = arrayListOf<ArtistModel>()
     var artistId = 1
     var shop = "GLOBAL"
+    var backPressedTime = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +35,12 @@ class MainActivity : AppCompatActivity(), BottomSheetArtistAdapter.OnArtistShopL
             if (it.state != BottomSheetBehavior.STATE_COLLAPSED) {
                 it.setState(BottomSheetBehavior.STATE_COLLAPSED)
             } else {
-                super.onBackPressed()
+                if (System.currentTimeMillis() - backPressedTime > 1500) {
+                    Toast.makeText(this, getString(R.string.toast_back_pressed), Toast.LENGTH_SHORT).show()
+                    backPressedTime = System.currentTimeMillis()
+                } else {
+                    finish()
+                }
             }
         }
     }

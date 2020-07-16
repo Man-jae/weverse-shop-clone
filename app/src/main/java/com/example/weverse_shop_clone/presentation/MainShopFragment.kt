@@ -8,9 +8,11 @@ import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.PagerAdapter
 import com.example.weverse_shop_clone.R
+import com.example.weverse_shop_clone.data.mapper.ArtistMapper
 import com.example.weverse_shop_clone.data.mapper.BannerMapper
 import com.example.weverse_shop_clone.data.mapper.NoticeMapper
 import com.example.weverse_shop_clone.data.mapper.ShopMapper
+import com.example.weverse_shop_clone.data.model.ArtistModel
 import com.example.weverse_shop_clone.data.model.BannerModel
 import com.example.weverse_shop_clone.data.model.NoticeModel
 import com.example.weverse_shop_clone.data.model.ShopModel
@@ -110,6 +112,10 @@ class MainShopFragment : BaseFragment() {
                         initBanner()
                         initGoods()
                         noticeAdapter?.setItems(noticeList)
+                        (activity as MainActivity).apply {
+                            artistShopList = body.artists.map(ArtistMapper::mapToData) as ArrayList<ArtistModel>
+                            initBottomSheet()
+                        }
                     }
                 }
             }

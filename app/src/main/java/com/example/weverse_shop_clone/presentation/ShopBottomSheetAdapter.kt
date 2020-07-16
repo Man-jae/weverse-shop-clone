@@ -7,13 +7,17 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.request.RequestOptions
 import com.example.weverse_shop_clone.R
+import com.example.weverse_shop_clone.data.model.ArtistModel
 import kotlinx.android.synthetic.main.item_bottom_sheet_artist.view.*
 import java.util.*
 
 class ShopBottomSheetAdapter(
     private val context: Context,
-    private val items: ArrayList<String>
+    private val items: ArrayList<ArtistModel>
 ) : RecyclerView.Adapter<ShopBottomSheetAdapter.ViewHolder>() {
     override fun getItemCount(): Int = items.size
 
@@ -29,7 +33,13 @@ class ShopBottomSheetAdapter(
         val item = items[position]
 
         holder.apply {
+            Glide.with(context)
+                .load(item.imageUrl)
+                .apply(RequestOptions.bitmapTransform(CircleCrop()))
+                .thumbnail(0.1f)
+                .into(viewArtist)
 
+            textArtist.text = item.name
         }
     }
 

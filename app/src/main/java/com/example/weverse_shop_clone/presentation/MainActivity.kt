@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.weverse_shop_clone.R
+import com.example.weverse_shop_clone.data.model.ArtistModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.bottom_sheet_artist_shop.*
@@ -13,7 +14,7 @@ import kotlinx.android.synthetic.main.bottom_sheet_artist_shop.*
 class MainActivity : AppCompatActivity() {
     var artistShopBehavior: BottomSheetBehavior<*>? = null
     var artistShopAdapter: ShopBottomSheetAdapter? = null
-    var shopList = arrayListOf<String>()
+    var artistShopList = arrayListOf<ArtistModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,8 +23,6 @@ class MainActivity : AppCompatActivity() {
         view_outside.setOnClickListener(onClickListener)
 
         bottom_navigation.setupWithNavController(findNavController(R.id.fragment_main))
-
-        initBottomSheet()
     }
 
     override fun onBackPressed() {
@@ -36,9 +35,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun initBottomSheet() {
+    fun initBottomSheet() {
         artistShopBehavior = BottomSheetBehavior.from(bottom_sheet_artist_shop)
-        artistShopAdapter = ShopBottomSheetAdapter(this, shopList)
+        artistShopAdapter = ShopBottomSheetAdapter(this, artistShopList)
         recycler_artist.adapter = artistShopAdapter
     }
 

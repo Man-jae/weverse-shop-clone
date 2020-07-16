@@ -17,7 +17,8 @@ import java.util.*
 
 class ShopBottomSheetAdapter(
     private val context: Context,
-    private val items: ArrayList<ArtistModel>
+    private val items: ArrayList<ArtistModel>,
+    private val onItemClickListener: OnItemClickListener
 ) : RecyclerView.Adapter<ShopBottomSheetAdapter.ViewHolder>() {
     override fun getItemCount(): Int = items.size
 
@@ -25,7 +26,8 @@ class ShopBottomSheetAdapter(
         return ViewHolder(
             LayoutInflater
                 .from(context)
-                .inflate(R.layout.item_bottom_sheet_artist, parent, false)
+                .inflate(R.layout.item_bottom_sheet_artist, parent, false),
+            onItemClickListener
         )
     }
 
@@ -43,9 +45,22 @@ class ShopBottomSheetAdapter(
         }
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(
+        view: View, var onItemClickListener: OnItemClickListener
+    ) : RecyclerView.ViewHolder(view), View.OnClickListener {
         var viewArtist: ImageView = view.view_artist
         var textArtist: TextView = view.text_artist_name
+
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View) {
+            onItemClickListener.onItemClick(v, adapterPosition)
+        }
     }
 
+    interface OnItemClickListener {
+        fun onItemClick(view: View, position: Int)
+    }
 }

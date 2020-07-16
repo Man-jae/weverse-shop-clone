@@ -48,7 +48,7 @@ class MainShopFragment : BaseFragment() {
         initRecentGoods()
         initNotice()
 
-        getInfo(2)
+        getInfo((activity as MainActivity).artistId)
     }
 
     private fun initBanner() {
@@ -96,7 +96,7 @@ class MainShopFragment : BaseFragment() {
         }
     }
 
-    private fun getInfo(artistId: Int) {
+    fun getInfo(artistId: Int) {
         bannerList.clear()
         noticeList.clear()
 
@@ -109,6 +109,9 @@ class MainShopFragment : BaseFragment() {
                     noticeList = body.notices.map(NoticeMapper::mapToData) as ArrayList<NoticeModel>
 
                     withContext(Dispatchers.Main) {
+                        text_artist_name.text = body.artists[artistId - 1].name
+                        text_artist_shop.text = body.artists[artistId - 1].shops[0]
+
                         initBanner()
                         initGoods()
                         noticeAdapter?.setItems(noticeList)

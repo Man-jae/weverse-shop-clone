@@ -11,10 +11,11 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.bottom_sheet_artist_shop.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ShopBottomSheetAdapter.OnItemClickListener {
     var artistShopBehavior: BottomSheetBehavior<*>? = null
     var artistShopAdapter: ShopBottomSheetAdapter? = null
     var artistShopList = arrayListOf<ArtistModel>()
+    var artistId = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
     fun initBottomSheet() {
         artistShopBehavior = BottomSheetBehavior.from(bottom_sheet_artist_shop)
-        artistShopAdapter = ShopBottomSheetAdapter(this, artistShopList)
+        artistShopAdapter = ShopBottomSheetAdapter(this, artistShopList, this)
         recycler_artist.adapter = artistShopAdapter
     }
 
@@ -47,5 +48,14 @@ class MainActivity : AppCompatActivity() {
                 artistShopBehavior?.state = BottomSheetBehavior.STATE_COLLAPSED
             }
         }
+    }
+
+    override fun onItemClick(view: View, position: Int) {
+        val navFragment = supportFragmentManager.findFragmentById(R.id.fragment_main)
+        val fragment = navFragment?.childFragmentManager?.fragments?.get(0) as MainShopFragment
+
+        artistId = artistShopList[position].id
+        artistShopBehavior?.state = BottomSheetBehavior.STATE_COLLAPSED
+        fragment.getInfo(artistId)
     }
 }

@@ -1,9 +1,9 @@
-package com.example.weverse_shop_clone.data.mapper
+package com.example.weverse_shop_clone.data.source.remote.mapper
 
 import com.example.weverse_shop_clone.data.model.BannerModel
 import com.example.weverse_shop_clone.data.source.remote.response.BannerResponse
 
-object BannerMapper: BaseMapper<BannerResponse, BannerModel> {
+object BannerMapper : BaseMapper<BannerResponse, BannerModel> {
     override fun mapToRemote(from: BannerModel): BannerResponse {
         return BannerResponse(
             title = from.title,

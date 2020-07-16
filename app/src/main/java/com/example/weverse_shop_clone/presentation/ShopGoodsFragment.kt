@@ -2,6 +2,7 @@ package com.example.weverse_shop_clone.presentation
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.weverse_shop_clone.R
 import com.example.weverse_shop_clone.data.model.ShopModel
@@ -20,6 +21,10 @@ class ShopGoodsFragment(private val shopInfo: ShopModel) : BaseFragment() {
             adapter = goodsAdapter
             isNestedScrollingEnabled = false
             addItemDecoration(SpaceDecoration(2))
+        }
+
+        button_goods_more.setOnClickListener {
+            Toast.makeText(context, getString(R.string.toast_click_goods_all), Toast.LENGTH_SHORT).show()
         }
     }
 }

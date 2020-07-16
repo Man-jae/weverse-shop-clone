@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.weverse_shop_clone.R
@@ -52,6 +53,9 @@ class GoodsAdapter(
                         ?: item.originalPrice.toInt()
                 )
             )
+            itemView.setOnClickListener {
+                Toast.makeText(context, context.getString(R.string.toast_click_goods), Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

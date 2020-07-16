@@ -33,4 +33,8 @@
     <string name="bottom_sheet_button">완료</string>
     <string name="bottom_sheet_title">아티스트 및 샵 선택</string>
     <string name="artist_shop_title">%s · %s</string>
+    <string name="toast_click_banner">배너를 클릭했습니다.</string>
+    <string name="toast_click_goods">상품을 클릭했습니다.</string>
+    <string name="toast_click_goods_all">모든 상품 더보기를 클릭했습니다.</string>
+    <string name="toast_click_notice">공지사항을 클릭했습니다.</string>
 </resources>

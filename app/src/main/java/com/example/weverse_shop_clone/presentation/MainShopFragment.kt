@@ -8,6 +8,8 @@ import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.PagerAdapter
 import com.example.weverse_shop_clone.R
+import com.example.weverse_shop_clone.data.mapper.BannerMapper
+import com.example.weverse_shop_clone.data.model.BannerModel
 import com.example.weverse_shop_clone.data.source.remote.ServerManager
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_main_shop.*
@@ -19,7 +21,7 @@ import kotlinx.coroutines.withContext
 class MainShopFragment : BaseFragment() {
     private var recentGoodsAdapter: RecentGoodsAdapter? = null
     private var noticeAdapter: NoticeAdapter? = null
-    private var bannerList = arrayListOf<String>()
+    private var bannerList = arrayListOf<BannerModel>()
     private var recentGoodsList = arrayListOf<String>()
     private var noticeList = arrayListOf<String>()
     private var currentY = 0
@@ -34,7 +36,6 @@ class MainShopFragment : BaseFragment() {
             currentY = scrollY
         }
 
-        initBanner()
         initGoods()
         initRecentGoods()
         initNotice()
@@ -91,7 +92,9 @@ class MainShopFragment : BaseFragment() {
             val response = ServerManager.getInfo(1) // TODO : 임시 Query 적용
             if (response.isSuccessful) {
                 response.body()?.let { body ->
+                    bannerList = body.banners.map(BannerMapper::mapToData) as ArrayList<BannerModel>
                     withContext(Dispatchers.Main) {
+                        initBanner()
                     }
                 }
             }

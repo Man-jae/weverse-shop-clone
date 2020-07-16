@@ -4,17 +4,20 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import com.example.weverse_shop_clone.data.model.BannerModel
 import com.example.weverse_shop_clone.util.MeasuredViewPager
 
 
-class BannerAdapter(fm: FragmentManager, var banners: List<String>) :
-    FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+class BannerAdapter(
+    fm: FragmentManager,
+    private var banners: List<BannerModel>
+) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     private var currentPosition = -1
 
     override fun getCount(): Int = banners.size
     override fun getItem(position: Int): Fragment {
-        return BannerFragment(position)
+        return BannerFragment(banners[position])
     }
 
     override fun setPrimaryItem(container: ViewGroup, position: Int, `object`: Any) {

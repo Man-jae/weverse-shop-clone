@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.weverse_shop_clone.R
@@ -45,6 +46,8 @@ class GoodsAdapter(
         holder.apply {
             textSoleSale.visibility = View.GONE
             textPreOrder.visibility = View.GONE
+            textFanOnly.visibility = View.GONE
+            layoutSoldOut.visibility = View.GONE
 
             Glide.with(context)
                 .load(item.imageUrl)
@@ -53,6 +56,8 @@ class GoodsAdapter(
 
             textSoleSale.visibility = if (item.isMonopoly) View.VISIBLE else View.GONE
             textPreOrder.visibility = if (item.isPreOrder) View.VISIBLE else View.GONE
+            textFanOnly.visibility = if (item.isFcOnly) View.VISIBLE else View.GONE
+            layoutSoldOut.visibility = if (item.isSoldOut) View.VISIBLE else View.GONE
             textGoodsTitle.text = item.name
             textGoodsPrice.text = context.getString(
                 R.string.goods_won,
@@ -94,8 +99,10 @@ class GoodsAdapter(
         var viewGoods: ImageView = view.view_goods
         var textSoleSale: TextView = view.text_sole_sale
         var textPreOrder: TextView = view.text_pre_order
+        var textFanOnly: TextView = view.text_fan_only
         var textGoodsTitle: TextView = view.text_goods_title
         var textGoodsPrice: TextView = view.text_goods_price
+        var layoutSoldOut: ConstraintLayout = view.layout_sold_out
     }
 
 }

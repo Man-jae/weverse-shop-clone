@@ -104,6 +104,12 @@
         <item name="android:text">@string/goods_pre_order</item>
     </style>
 
+    <style name="text_goods_fan_only">
+        <item name="android:textColor">@color/goods_fan_only</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:text">@string/goods_fan_only</item>
+    </style>
+
     <style name="text_goods_title">
         <item name="android:textColor">@color/goods_title</item>
         <item name="android:textSize">14dp</item>
@@ -162,6 +168,12 @@
         <item name="android:text">@string/artist_shop_title</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="text_goods_sold_out">
+        <item name="android:textColor">@color/goods_sold_out</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:text">@string/goods_sold_out</item>
     </style>
 
 </resources>

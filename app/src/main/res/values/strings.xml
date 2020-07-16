@@ -29,7 +29,7 @@
     <string name="goods_pre_order">예약판매</string>
     <string name="goods_sold_out">품절</string>
     <string name="goods_stop_selling">판매중지</string>
-    <string name="goods_won">₩ %d</string>
+    <string name="goods_won">₩ %s</string>
     <string name="bottom_sheet_button">완료</string>
     <string name="bottom_sheet_title">아티스트 및 샵 선택</string>
     <string name="artist_shop_title">%s · %s</string>

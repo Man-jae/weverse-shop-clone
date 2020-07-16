@@ -11,15 +11,16 @@ import com.bumptech.glide.Glide
 import com.example.weverse_shop_clone.R
 import com.example.weverse_shop_clone.data.model.ShopModel
 import kotlinx.android.synthetic.main.item_goods.view.*
+import java.text.DecimalFormat
 import java.util.*
 
 class GoodsAdapter(
     private val context: Context,
     private val items: ArrayList<ShopModel.ShopSaleModel>
 ) : RecyclerView.Adapter<GoodsAdapter.ViewHolder>() {
-    override fun getItemCount(): Int {
-        return items.size
-    }
+    var commaFormat: DecimalFormat = DecimalFormat("###,###")
+
+    override fun getItemCount(): Int = items.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -44,7 +45,13 @@ class GoodsAdapter(
             textSoleSale.visibility = if (item.isMonopoly) View.VISIBLE else View.GONE
             textPreOrder.visibility = if (item.isPreOrder) View.VISIBLE else View.GONE
             textGoodsTitle.text = item.name
-            textGoodsPrice.text = item.salePrice?.toString() ?: item.originalPrice.toString()
+            textGoodsPrice.text = context.getString(
+                R.string.goods_won,
+                commaFormat.format(
+                    item.salePrice?.toInt()
+                        ?: item.originalPrice.toInt()
+                )
+            )
         }
     }
 

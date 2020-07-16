@@ -27,6 +27,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MainShopFragment : BaseFragment() {
+    private lateinit var db: AppDatabase
     private var recentGoodsAdapter: RecentGoodsAdapter? = null
     private var noticeAdapter: NoticeAdapter? = null
     private var bannerList = arrayListOf<BannerModel>()
@@ -45,6 +46,8 @@ class MainShopFragment : BaseFragment() {
         text_privacy_policy.setOnClickListener(onClickListener)
         text_terms_of_use.setOnClickListener(onClickListener)
         text_paid_service_terms.setOnClickListener(onClickListener)
+
+        db = AppDatabase.getInstance(activity as MainActivity)
 
         swipe_layout.setOnRefreshListener {
             (activity as MainActivity).apply {
@@ -76,7 +79,14 @@ class MainShopFragment : BaseFragment() {
         }
 
         val adapter: PagerAdapter =
-            ShopGoodsAdapter((activity as MainActivity).supportFragmentManager, shopList, layout_tab_shop.tabCount)
+            ShopGoodsAdapter(
+                (activity as MainActivity).supportFragmentManager,
+                db,
+                (activity as MainActivity).artistId,
+                shopList,
+                layout_tab_shop.tabCount
+            )
+
         viewpager_goods.adapter = adapter
         viewpager_goods.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(layout_tab_shop))
         layout_tab_shop.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {

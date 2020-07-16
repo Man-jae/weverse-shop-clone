@@ -11,12 +11,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.weverse_shop_clone.R
 import com.example.weverse_shop_clone.data.model.ShopModel
+import com.example.weverse_shop_clone.data.source.local.AppDatabase
+import com.example.weverse_shop_clone.data.source.local.ShopDataBase
 import kotlinx.android.synthetic.main.item_goods.view.*
 import java.text.DecimalFormat
 import java.util.*
 
 class GoodsAdapter(
     private val context: Context,
+    private val db: AppDatabase,
+    private val artistId: Int,
     private val items: ArrayList<ShopModel.ShopSaleModel>
 ) : RecyclerView.Adapter<GoodsAdapter.ViewHolder>() {
     var commaFormat: DecimalFormat = DecimalFormat("###,###")

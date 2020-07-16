@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.weverse_shop_clone.R
@@ -38,6 +39,14 @@ class RecentGoodsAdapter(
                 .into(viewGoods)
 
             textGoods.text = item.title
+
+            itemView.setOnClickListener {
+                Toast.makeText(
+                    context,
+                    context.getString(R.string.toast_click, context.getString(R.string.shop_goods_title)),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 

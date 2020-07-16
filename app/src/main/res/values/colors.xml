@@ -24,6 +24,8 @@
     <color name="goods_price">@color/black_000000</color>
     <color name="notice_title">@color/black_000000</color>
     <color name="notice_date">@color/gray_999999</color>
+    <color name="bottom_sheet_title">@color/black_000000</color>
+    <color name="bottom_sheet_artist_name">@color/black_000000</color>
 
 
     <!-- Palette colors -->

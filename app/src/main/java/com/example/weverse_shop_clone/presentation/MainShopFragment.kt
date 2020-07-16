@@ -15,6 +15,7 @@ import com.example.weverse_shop_clone.data.model.BannerModel
 import com.example.weverse_shop_clone.data.model.NoticeModel
 import com.example.weverse_shop_clone.data.model.ShopModel
 import com.example.weverse_shop_clone.data.source.remote.ServerManager
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_main_shop.*
 import kotlinx.coroutines.CoroutineScope
@@ -34,6 +35,7 @@ class MainShopFragment : BaseFragment() {
     override fun getLayoutResId(): Int = R.layout.fragment_main_shop
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        layout_artist.setOnClickListener(onClickListener)
         button_company_info.setOnClickListener(onClickListener)
         button_back_to_top.setOnClickListener(onClickListener)
 
@@ -44,7 +46,7 @@ class MainShopFragment : BaseFragment() {
         initRecentGoods()
         initNotice()
 
-        getInfo()
+        getInfo(2)
     }
 
     private fun initBanner() {
@@ -92,12 +94,12 @@ class MainShopFragment : BaseFragment() {
         }
     }
 
-    private fun getInfo() {
+    private fun getInfo(artistId: Int) {
         bannerList.clear()
         noticeList.clear()
 
         CoroutineScope(Dispatchers.IO).launch {
-            val response = ServerManager.getInfo(1) // TODO : 임시 Query 적용
+            val response = ServerManager.getInfo(artistId) // TODO : 임시 Query 적용
             if (response.isSuccessful) {
                 response.body()?.let { body ->
                     bannerList = body.banners.map(BannerMapper::mapToData) as ArrayList<BannerModel>
@@ -129,6 +131,10 @@ class MainShopFragment : BaseFragment() {
 
     private val onClickListener = View.OnClickListener {
         when (it.id) {
+            R.id.layout_artist -> {
+                (activity as MainActivity).artistShopBehavior?.state = BottomSheetBehavior.STATE_EXPANDED
+            }
+
             R.id.button_company_info -> {
                 if (layout_company_info.isVisible) {
                     layout_company_info.visibility = View.GONE

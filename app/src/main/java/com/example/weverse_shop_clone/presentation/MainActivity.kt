@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity(), BottomSheetArtistAdapter.OnArtistShopL
 
     override fun onBackPressed() {
         artistShopBehavior?.let {
-            if (it.state != BottomSheetBehavior.STATE_HIDDEN) {
+            if (it.state != BottomSheetBehavior.STATE_COLLAPSED) {
                 it.setState(BottomSheetBehavior.STATE_COLLAPSED)
             } else {
                 super.onBackPressed()

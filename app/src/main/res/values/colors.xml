@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimary">@color/green_03dac5</color>
     <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">@color/green_03dac5</color>
+
+    <color name="background_main">@color/white_ffffff</color>
+    <color name="bottom_navigation_background">@color/gray_333333</color>
+    <color name="bottom_navigation_button_checked">@color/white_ffffff</color>
+    <color name="bottom_navigation_button_unchecked">@color/gray_666666</color>
+    <color name="tab_main">@color/green_03dac5</color>
+    <color name="shop_artist_name">@color/black_000000</color>
+    <color name="shop_type_background">@color/black_000000</color>
+    <color name="shop_type_text">@color/white_ffffff</color>
+    <color name="shop_title">@color/black_000000</color>
+    <color name="button_main">@color/green_03dac5</color>
+    <color name="company_info">@color/gray_999999</color>
+    <color name="company_terms">@color/gray_666666</color>
+    <color name="banner_title">@color/black_000000</color>
+    <color name="banner_sub_title">@color/gray_999999</color>
+    <color name="goods_sole_sale">@color/green_03dac5</color>
+    <color name="goods_sold_out">@color/white_ffffff</color>
+    <color name="goods_sold_out_background">@color/gray_999999</color>
+    <color name="goods_pre_order">@color/gray_999999</color>
+    <color name="goods_fan_only">@color/purple_8b00ff</color>
+    <color name="goods_title">@color/black_000000</color>
+    <color name="goods_price">@color/black_000000</color>
+    <color name="notice_title">@color/black_000000</color>
+    <color name="notice_date">@color/gray_999999</color>
+    <color name="bottom_sheet_title">@color/black_000000</color>
+    <color name="bottom_sheet_artist_name">@color/black_000000</color>
+    <color name="bottom_sheet_shop_name">@color/black_000000</color>
+    <color name="artist_shop_title">@color/black_000000</color>
+
+
+    <!-- Palette colors -->
+    <color name="transparent">#00000000</color>
+    <color name="black_000000">#000000</color>
+    <color name="gray_333333">#333333</color>
+    <color name="gray_666666">#666666</color>
+    <color name="gray_999999">#999999</color>
+    <color name="gray_cccccc">#cccccc</color>
+    <color name="white_ffffff">#ffffff</color>
+    <color name="green_03dac5">#03DAC5</color>
+    <color name="purple_8b00ff">#8b00ff</color>
 </resources>

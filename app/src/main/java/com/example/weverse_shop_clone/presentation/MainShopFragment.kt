@@ -42,6 +42,12 @@ class MainShopFragment : BaseFragment() {
         button_company_info.setOnClickListener(onClickListener)
         button_back_to_top.setOnClickListener(onClickListener)
 
+        swipe_layout.setOnRefreshListener {
+            (activity as MainActivity).apply {
+                getInfo(artistId, shop)
+            }
+        }
+
         scroll_view.setOnScrollChangeListener { _: NestedScrollView?, _: Int, scrollY: Int, _: Int, _: Int ->
             currentY = scrollY
             layout_artist_shop_title.visibility = if (currentY > layout_artist.top) View.VISIBLE else View.GONE
@@ -50,7 +56,9 @@ class MainShopFragment : BaseFragment() {
         initRecentGoods()
         initNotice()
 
-        getInfo((activity as MainActivity).artistId, "GLOBAL")
+        (activity as MainActivity).apply {
+            getInfo(artistId, shop)
+        }
     }
 
     private fun initBanner() {
@@ -99,6 +107,7 @@ class MainShopFragment : BaseFragment() {
     }
 
     fun getInfo(artistId: Int, shop: String) {
+        swipe_layout.isRefreshing = true
         bannerList.clear()
         shopList.clear()
         noticeList.clear()
@@ -114,6 +123,7 @@ class MainShopFragment : BaseFragment() {
                     noticeList = body.notices.map(NoticeMapper::mapToData) as ArrayList<NoticeModel>
 
                     withContext(Dispatchers.Main) {
+                        swipe_layout.isRefreshing = false
                         val artistName = body.artists[artistId - 1].name
                         text_artist_name.text = artistName
                         text_artist_shop.text = shop

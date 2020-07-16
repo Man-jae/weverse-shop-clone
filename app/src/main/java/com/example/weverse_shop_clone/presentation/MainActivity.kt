@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity(), BottomSheetArtistAdapter.OnArtistShopL
     var artistShopAdapter: BottomSheetArtistAdapter? = null
     var artistShopList = arrayListOf<ArtistModel>()
     var artistId = 1
-    var shop = ""
+    var shop = "GLOBAL"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

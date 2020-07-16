@@ -100,7 +100,10 @@ class MainShopFragment : BaseFragment() {
 
     fun getInfo(artistId: Int, shop: String) {
         bannerList.clear()
+        shopList.clear()
         noticeList.clear()
+
+        scroll_view.smoothScrollTo(0, 0)
 
         CoroutineScope(Dispatchers.IO).launch {
             val response = ServerManager.getInfo(artistId) // TODO : 임시 Query 적용
@@ -120,6 +123,7 @@ class MainShopFragment : BaseFragment() {
                         initGoods()
                         noticeAdapter?.setItems(noticeList)
                         (activity as MainActivity).apply {
+                            artistShopList.clear()
                             artistShopList = body.artists.map(ArtistMapper::mapToData) as ArrayList<ArtistModel>
                             initBottomSheet()
                         }

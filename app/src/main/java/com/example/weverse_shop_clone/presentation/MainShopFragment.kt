@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.PagerAdapter
 import com.example.weverse_shop_clone.R
 import com.example.weverse_shop_clone.data.mapper.BannerMapper
+import com.example.weverse_shop_clone.data.mapper.ShopMapper
 import com.example.weverse_shop_clone.data.model.BannerModel
+import com.example.weverse_shop_clone.data.model.ShopModel
 import com.example.weverse_shop_clone.data.source.remote.ServerManager
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_main_shop.*
@@ -22,6 +24,7 @@ class MainShopFragment : BaseFragment() {
     private var recentGoodsAdapter: RecentGoodsAdapter? = null
     private var noticeAdapter: NoticeAdapter? = null
     private var bannerList = arrayListOf<BannerModel>()
+    private var shopList = arrayListOf<ShopModel>()
     private var recentGoodsList = arrayListOf<String>()
     private var noticeList = arrayListOf<String>()
     private var currentY = 0
@@ -36,7 +39,6 @@ class MainShopFragment : BaseFragment() {
             currentY = scrollY
         }
 
-        initGoods()
         initRecentGoods()
         initNotice()
 
@@ -49,8 +51,12 @@ class MainShopFragment : BaseFragment() {
     }
 
     private fun initGoods() {
+        shopList.forEach { shop ->
+            layout_tab_shop.addTab(layout_tab_shop.newTab().setText(shop.category.name))
+        }
+
         val adapter: PagerAdapter =
-            ShopGoodsAdapter((activity as MainActivity).supportFragmentManager, layout_tab_shop.tabCount)
+            ShopGoodsAdapter((activity as MainActivity).supportFragmentManager, shopList, layout_tab_shop.tabCount)
         viewpager_goods.adapter = adapter
         viewpager_goods.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(layout_tab_shop))
         layout_tab_shop.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
@@ -93,8 +99,10 @@ class MainShopFragment : BaseFragment() {
             if (response.isSuccessful) {
                 response.body()?.let { body ->
                     bannerList = body.banners.map(BannerMapper::mapToData) as ArrayList<BannerModel>
+                    shopList = body.shops.map(ShopMapper::mapToData) as ArrayList<ShopModel>
                     withContext(Dispatchers.Main) {
                         initBanner()
+                        initGoods()
                     }
                 }
             }

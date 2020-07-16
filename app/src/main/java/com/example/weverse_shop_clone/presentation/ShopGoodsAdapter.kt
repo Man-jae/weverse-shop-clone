@@ -4,17 +4,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import com.example.weverse_shop_clone.data.model.ShopModel
 import com.example.weverse_shop_clone.util.MeasuredViewPager
 
 
-class ShopGoodsAdapter(fm: FragmentManager, var tabCount: Int) :
+class ShopGoodsAdapter(fm: FragmentManager, var shopInfo: ArrayList<ShopModel>, var tabCount: Int) :
     FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     private var currentPosition = -1
 
     override fun getCount(): Int = tabCount
     override fun getItem(position: Int): Fragment {
-        return ShopGoodsFragment(position)
+        return ShopGoodsFragment(shopInfo[position])
     }
 
     override fun setPrimaryItem(container: ViewGroup, position: Int, `object`: Any) {

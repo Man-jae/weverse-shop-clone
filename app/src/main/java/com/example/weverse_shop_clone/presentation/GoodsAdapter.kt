@@ -4,13 +4,18 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.weverse_shop_clone.R
+import com.example.weverse_shop_clone.data.model.ShopModel
+import kotlinx.android.synthetic.main.item_goods.view.*
 import java.util.*
 
 class GoodsAdapter(
     private val context: Context,
-    private val items: ArrayList<String>
+    private val items: ArrayList<ShopModel.ShopSaleModel>
 ) : RecyclerView.Adapter<GoodsAdapter.ViewHolder>() {
     override fun getItemCount(): Int {
         return items.size
@@ -25,9 +30,30 @@ class GoodsAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = items[position]
+
+        holder.apply {
+            textSoleSale.visibility = View.GONE
+            textPreOrder.visibility = View.GONE
+
+            Glide.with(context)
+                .load(item.imageUrl)
+                .thumbnail(0.1f)
+                .into(viewGoods)
+
+            textSoleSale.visibility = if (item.isMonopoly) View.VISIBLE else View.GONE
+            textPreOrder.visibility = if (item.isPreOrder) View.VISIBLE else View.GONE
+            textGoodsTitle.text = item.name
+            textGoodsPrice.text = item.salePrice?.toString() ?: item.originalPrice.toString()
+        }
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        var viewGoods: ImageView = view.view_goods
+        var textSoleSale: TextView = view.text_sole_sale
+        var textPreOrder: TextView = view.text_pre_order
+        var textGoodsTitle: TextView = view.text_goods_title
+        var textGoodsPrice: TextView = view.text_goods_price
     }
 
 }

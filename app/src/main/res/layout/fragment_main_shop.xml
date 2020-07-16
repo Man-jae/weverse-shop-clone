@@ -154,75 +154,7 @@
                     app:tabIndicatorFullWidth="false"
                     app:tabMode="scrollable"
                     app:tabSelectedTextColor="@color/tab_main"
-                    >
-
-                    <com.google.android.material.tabs.TabItem
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/shop_goods_tab_book"
-                        />
-
-                    <com.google.android.material.tabs.TabItem
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/shop_goods_tab_collab"
-                        />
-
-                    <com.google.android.material.tabs.TabItem
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/shop_goods_tab_merch"
-                        />
-
-                    <com.google.android.material.tabs.TabItem
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/shop_goods_tab_album"
-                        />
-
-                    <com.google.android.material.tabs.TabItem
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/shop_goods_tab_membership"
-                        />
-
-                    <com.google.android.material.tabs.TabItem
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/shop_goods_tab_weverse"
-                        />
-
-                    <com.google.android.material.tabs.TabItem
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/shop_goods_tab_dvd"
-                        />
-
-                    <com.google.android.material.tabs.TabItem
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/shop_goods_tab_pop_up"
-                        />
-
-                    <com.google.android.material.tabs.TabItem
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/shop_goods_tab_live"
-                        />
-
-                    <com.google.android.material.tabs.TabItem
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/shop_goods_tab_bangbang"
-                        />
-
-                    <com.google.android.material.tabs.TabItem
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/shop_goods_tab_art_toy"
-                        />
-
-                </com.google.android.material.tabs.TabLayout>
+                    />
 
                 <com.example.weverse_shop_clone.util.MeasuredViewPager
                     android:id="@+id/viewpager_goods"

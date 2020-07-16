@@ -139,7 +139,6 @@ class MainShopFragment : BaseFragment() {
             if (response.isSuccessful) {
                 response.body()?.let { body ->
                     bannerList.clear()
-                    shopList.clear()
                     noticeList.clear()
 
                     bannerList = body.banners.map(BannerMapper::mapToData) as ArrayList<BannerModel>

@@ -54,7 +54,11 @@ class GoodsAdapter(
                 )
             )
             itemView.setOnClickListener {
-                Toast.makeText(context, context.getString(R.string.toast_click_goods), Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    context,
+                    context.getString(R.string.toast_click, context.getString(R.string.shop_goods_title)),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }

@@ -23,7 +23,7 @@ class BannerFragment(private val banner: BannerModel) : BaseFragment() {
         text_banner_title.text = banner.title
         text_banner_sub_title.text = banner.subTitle
         layout_item.setOnClickListener {
-            Toast.makeText(context, getString(R.string.toast_click_banner), Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, getString(R.string.toast_click, "배너"), Toast.LENGTH_SHORT).show()
         }
     }
 }

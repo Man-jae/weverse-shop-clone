@@ -24,7 +24,7 @@ class ShopGoodsFragment(private val shopInfo: ShopModel) : BaseFragment() {
         }
 
         button_goods_more.setOnClickListener {
-            Toast.makeText(context, getString(R.string.toast_click_goods_all), Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, getString(R.string.toast_click, getString(R.string.shop_goods_more_button)), Toast.LENGTH_SHORT).show()
         }
     }
 }

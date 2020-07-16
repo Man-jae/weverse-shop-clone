@@ -3,6 +3,7 @@ package com.example.weverse_shop_clone.presentation
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -41,6 +42,9 @@ class MainShopFragment : BaseFragment() {
         layout_artist_shop_title.setOnClickListener(onClickListener)
         button_company_info.setOnClickListener(onClickListener)
         button_back_to_top.setOnClickListener(onClickListener)
+        text_privacy_policy.setOnClickListener(onClickListener)
+        text_terms_of_use.setOnClickListener(onClickListener)
+        text_paid_service_terms.setOnClickListener(onClickListener)
 
         swipe_layout.setOnRefreshListener {
             (activity as MainActivity).apply {
@@ -171,6 +175,30 @@ class MainShopFragment : BaseFragment() {
                     layout_company_info.visibility = View.VISIBLE
                     view_arrow.isChecked = true
                 }
+            }
+
+            R.id.text_privacy_policy -> {
+                Toast.makeText(
+                    context,
+                    getString(R.string.toast_click, getString(R.string.company_privacy_policy)),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            R.id.text_terms_of_use -> {
+                Toast.makeText(
+                    context,
+                    getString(R.string.toast_click, getString(R.string.company_terms_of_use)),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            R.id.text_paid_service_terms -> {
+                Toast.makeText(
+                    context,
+                    getString(R.string.toast_click, getString(R.string.company_paid_service_terms)),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
             R.id.button_back_to_top -> {

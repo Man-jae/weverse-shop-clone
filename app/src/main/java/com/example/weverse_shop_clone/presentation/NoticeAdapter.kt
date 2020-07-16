@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weverse_shop_clone.R
 import com.example.weverse_shop_clone.data.model.NoticeModel
-import kotlinx.android.synthetic.main.fragment_banner.*
 import kotlinx.android.synthetic.main.item_notice.view.*
 import java.util.*
 
@@ -35,7 +34,11 @@ class NoticeAdapter(
             textNoticeTitle.text = item.title
             textNoticeDate.text = item.date
             itemView.setOnClickListener {
-                Toast.makeText(context, context.getString(R.string.toast_click_notice), Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    context,
+                    context.getString(R.string.toast_click, context.getString(R.string.shop_notice_title)),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.example.weverse_shop_clone.data.mapper
+package com.example.weverse_shop_clone.data.source.remote.mapper
 
 import com.example.weverse_shop_clone.data.model.NoticeModel
 import com.example.weverse_shop_clone.data.source.remote.response.NoticeResponse

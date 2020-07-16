@@ -9,15 +9,18 @@ import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.PagerAdapter
 import com.example.weverse_shop_clone.R
-import com.example.weverse_shop_clone.data.mapper.ArtistMapper
-import com.example.weverse_shop_clone.data.mapper.BannerMapper
-import com.example.weverse_shop_clone.data.mapper.NoticeMapper
-import com.example.weverse_shop_clone.data.mapper.ShopMapper
 import com.example.weverse_shop_clone.data.model.ArtistModel
 import com.example.weverse_shop_clone.data.model.BannerModel
 import com.example.weverse_shop_clone.data.model.NoticeModel
 import com.example.weverse_shop_clone.data.model.ShopModel
+import com.example.weverse_shop_clone.data.source.local.AppDatabase
+import com.example.weverse_shop_clone.data.source.local.ShopDataBase
 import com.example.weverse_shop_clone.data.source.remote.ServerManager
+import com.example.weverse_shop_clone.data.source.remote.mapper.ArtistMapper
+import com.example.weverse_shop_clone.data.source.remote.mapper.BannerMapper
+import com.example.weverse_shop_clone.data.source.remote.mapper.NoticeMapper
+import com.example.weverse_shop_clone.data.source.remote.mapper.ShopMapper
+import com.example.weverse_shop_clone.util.SpaceDecoration
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_main_shop.*
@@ -25,13 +28,16 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.*
 
 class MainShopFragment : BaseFragment() {
+    private lateinit var db: AppDatabase
+    private var bannerAdapter: BannerAdapter? = null
     private var recentGoodsAdapter: RecentGoodsAdapter? = null
     private var noticeAdapter: NoticeAdapter? = null
     private var bannerList = arrayListOf<BannerModel>()
     private var shopList = arrayListOf<ShopModel>()
-    private var recentGoodsList = arrayListOf<String>()
+    private var recentGoodsList = arrayListOf<ShopDataBase>()
     private var noticeList = arrayListOf<NoticeModel>()
     private var currentY = 0
 
@@ -45,6 +51,8 @@ class MainShopFragment : BaseFragment() {
         text_privacy_policy.setOnClickListener(onClickListener)
         text_terms_of_use.setOnClickListener(onClickListener)
         text_paid_service_terms.setOnClickListener(onClickListener)
+
+        db = AppDatabase.getInstance(activity as MainActivity)
 
         swipe_layout.setOnRefreshListener {
             (activity as MainActivity).apply {
@@ -66,7 +74,8 @@ class MainShopFragment : BaseFragment() {
     }
 
     private fun initBanner() {
-        viewpager_banner.adapter = BannerAdapter((activity as MainActivity).supportFragmentManager, bannerList)
+        bannerAdapter = BannerAdapter((activity as MainActivity).supportFragmentManager, bannerList)
+        viewpager_banner.adapter = bannerAdapter
     }
 
     private fun initGoods() {
@@ -76,7 +85,14 @@ class MainShopFragment : BaseFragment() {
         }
 
         val adapter: PagerAdapter =
-            ShopGoodsAdapter((activity as MainActivity).supportFragmentManager, shopList, layout_tab_shop.tabCount)
+            ShopGoodsAdapter(
+                (activity as MainActivity).supportFragmentManager,
+                db,
+                (activity as MainActivity).artistId,
+                shopList,
+                layout_tab_shop.tabCount
+            )
+
         viewpager_goods.adapter = adapter
         viewpager_goods.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(layout_tab_shop))
         layout_tab_shop.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
@@ -98,11 +114,13 @@ class MainShopFragment : BaseFragment() {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = recentGoodsAdapter
             isNestedScrollingEnabled = false
+            addItemDecoration(SpaceDecoration(5))
         }
         checkRecentGoods()
     }
 
     private fun initNotice() {
+        noticeList.clear()
         noticeAdapter = NoticeAdapter((activity as MainActivity), noticeList)
         recycler_notice.apply {
             layoutManager = LinearLayoutManager(context)
@@ -113,9 +131,6 @@ class MainShopFragment : BaseFragment() {
 
     fun getInfo(artistId: Int, shop: String) {
         swipe_layout.isRefreshing = true
-        bannerList.clear()
-        shopList.clear()
-        noticeList.clear()
 
         scroll_view.smoothScrollTo(0, 0)
 
@@ -123,6 +138,10 @@ class MainShopFragment : BaseFragment() {
             val response = ServerManager.getInfo(artistId)
             if (response.isSuccessful) {
                 response.body()?.let { body ->
+                    bannerList.clear()
+                    shopList.clear()
+                    noticeList.clear()
+
                     bannerList = body.banners.map(BannerMapper::mapToData) as ArrayList<BannerModel>
                     shopList = body.shops.map(ShopMapper::mapToData) as ArrayList<ShopModel>
                     noticeList = body.notices.map(NoticeMapper::mapToData) as ArrayList<NoticeModel>
@@ -141,9 +160,23 @@ class MainShopFragment : BaseFragment() {
                             artistShopList.clear()
                             artistShopList = body.artists.map(ArtistMapper::mapToData) as ArrayList<ArtistModel>
                             initBottomSheet()
+                            getRecentGoods()
                         }
                     }
                 }
+            }
+        }
+    }
+
+    fun getRecentGoods() {
+        recentGoodsList.clear()
+
+        CoroutineScope(Dispatchers.IO).launch {
+            recentGoodsList.addAll(db.shopDao().read((activity as MainActivity).artistId))
+            recentGoodsList.sortByDescending { it.createAt }
+            withContext(Dispatchers.Main) {
+                recentGoodsAdapter?.setItems(recentGoodsList)
+                checkRecentGoods()
             }
         }
     }

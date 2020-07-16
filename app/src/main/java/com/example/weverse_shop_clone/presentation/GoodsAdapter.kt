@@ -14,6 +14,10 @@ import com.example.weverse_shop_clone.data.model.ShopModel
 import com.example.weverse_shop_clone.data.source.local.AppDatabase
 import com.example.weverse_shop_clone.data.source.local.ShopDataBase
 import kotlinx.android.synthetic.main.item_goods.view.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.DecimalFormat
 import java.util.*
 
@@ -63,6 +67,21 @@ class GoodsAdapter(
                     context.getString(R.string.toast_click, context.getString(R.string.shop_goods_title)),
                     Toast.LENGTH_SHORT
                 ).show()
+
+                CoroutineScope(Dispatchers.IO).launch {
+                    db.shopDao().create(
+                        ShopDataBase(
+                            id = item.id,
+                            artistId = artistId,
+                            title = item.name,
+                            imageUrl = item.imageUrl,
+                            createAt = Date()
+                        )
+                    )
+                    withContext(Dispatchers.Main) {
+
+                    }
+                }
             }
         }
     }

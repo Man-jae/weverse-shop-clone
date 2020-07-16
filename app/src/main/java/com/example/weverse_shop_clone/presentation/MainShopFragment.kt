@@ -114,7 +114,7 @@ class MainShopFragment : BaseFragment() {
         scroll_view.smoothScrollTo(0, 0)
 
         CoroutineScope(Dispatchers.IO).launch {
-            val response = ServerManager.getInfo(artistId) // TODO : 임시 Query 적용
+            val response = ServerManager.getInfo(artistId)
             if (response.isSuccessful) {
                 response.body()?.let { body ->
                     bannerList = body.banners.map(BannerMapper::mapToData) as ArrayList<BannerModel>
